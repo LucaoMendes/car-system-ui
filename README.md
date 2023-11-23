@@ -1,3 +1,4 @@
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=LucaoMendes_car-system-ui&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=LucaoMendes_car-system-ui)
 
 # CarSystem
 Este projeto consiste em uma aplicação completa com back-end em Java (Spring) e front-end em Angular, oferecendo uma API RESTful para gerenciar usuários e carros. Os usuários podem autenticar-se, cadastrar informações pessoais, listar, atualizar e remover dados, incluindo detalhes sobre seus carros. A aplicação utiliza JWT para autenticação, H2 como banco de dados em memória, e proporciona uma experiência intuitiva e responsiva, atendendo aos requisitos de segurança, persistência, e integração entre front-end e back-end.
