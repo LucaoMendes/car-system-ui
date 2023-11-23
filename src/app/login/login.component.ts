@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { login } from './model/login.model';
+import { iLogin } from './model/login.model';
 
 @Component({
   selector: 'app-login',
@@ -7,7 +7,7 @@ import { login } from './model/login.model';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  login:login = {
+  login:iLogin = {
     username: '',
     password: ''
   }
