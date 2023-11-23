@@ -44,9 +44,10 @@
   <h3 class="col-span-full font-medium leading-6 text-gray-500">Dados do carro</h3>
   <hr class="col-span-full mt-2 mb-5">
   <div class="col-span-full flex items-center justify-center">
-    <label class="block">
+    <label class="block {{loading && 'opacity-10'}}">
       <span class="sr-only">Escolha uma foto para o carro</span>
       <input
+        [disabled]="loading"
         #imageInput
         (change)="processFile(imageInput)"
         type="file" accept="image/*" class="block w-full text-sm text-slate-500
@@ -95,7 +96,8 @@
               text-sm font-semibold text-white leading-6 shadow-sm
               focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2
               focus-visible:outline-emerald-600 mb-2">
-      Adicionar carro
+      <app-loading *ngIf="loading" [button]="true"/>
+      {{loading ? 'Carregando...' : 'Adicionar carro'}}
     </button>
   </div>
 </div>

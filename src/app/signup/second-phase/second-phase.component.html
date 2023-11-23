@@ -1,11 +1,13 @@
 <div class="flex flex-col items-center col-span-full">
   <span class="text-sm text-gray-500">Olá {{signup.firstName}}. Escolha uma foto para seu perfil!</span>
-  <div class="shrink-0 mb-3">
-    <img class="h-16 w-16 object-cover rounded-full" src="{{signup.photo ?? 'assets/no-image.png'}}" alt="Foto atual" id="photo" />
+  <div class="shrink-0 mb-3 relative">
+    <img class="h-16 w-16 object-cover rounded-full {{loading && 'opacity-10'}}" src="{{signup.photo ?? 'assets/no-image.png'}}" alt="Foto atual" id="photo" />
+    <app-loading *ngIf="loading"/>
   </div>
-  <label class="block">
+  <label class="block {{loading && 'opacity-10'}}" >
     <span class="sr-only">Escolha uma foto para o perfil</span>
     <input
+      [disabled]="loading"
       #imageInput
       (change)="processFile(imageInput)"
       type="file" accept="image/*" class="block w-full text-sm text-slate-500
@@ -15,9 +17,9 @@
       file:bg-violet-50 file:text-violet-700
       hover:file:bg-violet-100
     "/>
+
   </label>
 </div>
-
 <div class="col-span-full">
   <label for="login" class="block text-sm font-medium leading-6 text-gray-500">Usuário</label>
   <div class="mt-2">
