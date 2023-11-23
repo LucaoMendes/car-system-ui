@@ -68,8 +68,10 @@ export class SignupComponent {
     if(this.signUpPhase === SignupPhase.FIRST)
       return
 
-    this.signUpPhase =  this.signUpPhase === SignupPhase.THIRD ? SignupPhase.SECOND :
-                        this.signUpPhase === SignupPhase.SECOND ? SignupPhase.FIRST : SignupPhase.FIRST;
+    if(this.signUpPhase === SignupPhase.THIRD)
+      this.signUpPhase = SignupPhase.SECOND
+    else
+      this.signUpPhase = SignupPhase.FIRST
   }
 
   getPhaseSubmitBtnText(){
