@@ -1,0 +1,102 @@
+<div class="flex flex-col col-span-full gap-y-4 ">
+  <div
+    *ngIf="!signup.cars.length; else carsList"
+    class="border border-gray flex rounded-md p-5 items-center justify-center text-gray-400 font-medium">
+    Sem carros adicionados
+  </div>
+  <ng-template #carsList>
+    <div
+      *ngFor="let car of signup.cars"
+      class="border border-gray grid grid-cols-2 gap-x-6 gap-y-2 rounded-md">
+      <div>
+        <img src="{{car.photo && car.photo !== '' ? car.photo : 'assets/no-car-image.webp'}}" alt="No image">
+      </div>
+      <div class="flex">
+        <div class="flex flex-col items-center justify-center text-xs">
+
+
+          <div class="flex text-gray-500">
+            <p class="text-gray-500 font-medium">Modelo:</p>&nbsp; {{car.model}}
+          </div>
+
+          <div class="flex text-gray-500">
+            <p class="text-gray-500 font-medium">Ano:</p>&nbsp; {{car.year}}
+          </div>
+
+          <div class="flex text-gray-500">
+            <p class="text-gray-500 font-medium">Placa:</p>&nbsp; {{car.licensePlate}}
+          </div>
+
+          <div class="flex text-gray-500">
+            <p class="text-gray-500 font-medium">Cor:</p>&nbsp; {{car.color}}
+          </div>
+
+        </div>
+        <div class="flex flex-col items-end justify-center p-2">
+
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</div>
+<hr class="col-span-full mt-5 mb-5">
+<div class="col-span-full border border-gray rounded p-5 grid grid-cols-1 gap-x-6 gap-y-2 sm:grid-cols-6 ">
+  <h3 class="col-span-full font-medium leading-6 text-gray-500">Dados do carro</h3>
+  <hr class="col-span-full mt-2 mb-5">
+  <div class="col-span-full flex items-center justify-center">
+    <label class="block">
+      <span class="sr-only">Escolha uma foto para o carro</span>
+      <input
+        #imageInput
+        (change)="processFile(imageInput)"
+        type="file" accept="image/*" class="block w-full text-sm text-slate-500
+        file:mr-4 file:py-2 file:px-4
+        file:rounded-full file:border-0
+        file:text-sm file:font-semibold
+        file:bg-violet-50 file:text-violet-700
+        hover:file:bg-violet-100
+      "/>
+    </label>
+  </div>
+
+  <div class="sm:col-span-3 sm:col-start-1">
+    <label for="carModel" class="block text-sm font-medium leading-6 text-gray-500">Modelo</label>
+    <div class="mt-2">
+      <input [(ngModel)]="tempCar.model" id="carModel" name="carModel" type="text" autocomplete="carModel" required class="pl-2 block w-full rounded-md border-0 py-1.5 text-gray-500 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+    </div>
+  </div>
+
+  <div class="sm:col-span-3">
+    <label for="carYear" class="block text-sm font-medium leading-6 text-gray-500">Ano</label>
+    <div class="mt-2">
+      <input [(ngModel)]="tempCar.year" id="carYear" name="carYear" type="text" autocomplete="carYear" required class="pl-2 block w-full rounded-md border-0 py-1.5 text-gray-500 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+    </div>
+  </div>
+
+  <div class="sm:col-span-3 sm:col-start-1">
+    <label for="carColor" class="block text-sm font-medium leading-6 text-gray-500">Cor</label>
+    <div class="mt-2">
+      <input [(ngModel)]="tempCar.color" id="carColor" name="carColor" type="text" autocomplete="carColor" required class="pl-2 block w-full rounded-md border-0 py-1.5 text-gray-500 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+    </div>
+  </div>
+
+  <div class="sm:col-span-3">
+    <label for="carLicensePlate" class="block text-sm font-medium leading-6 text-gray-500">Placa</label>
+    <div class="mt-2">
+      <input [(ngModel)]="tempCar.licensePlate" id="carLicensePlate" name="carLicensePlate" type="text" autocomplete="carLicensePlate" required class="pl-2 block w-full rounded-md border-0 py-1.5 text-gray-500 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+    </div>
+  </div>
+
+  <div class="col-span-full">
+    <button
+      (click)="addCar()"
+      [disabled]="!checkAbleToAddCar()"
+      class=" w-full mt-2 rounded-md {{checkAbleToAddCar() ? ' bg-emerald-600 hover:bg-emerald-500 ' : 'bg-gray-300'}} px-3 py-1.5
+              text-sm font-semibold text-white leading-6 shadow-sm
+              focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2
+              focus-visible:outline-emerald-600 mb-2">
+      Adicionar carro
+    </button>
+  </div>
+</div>
+

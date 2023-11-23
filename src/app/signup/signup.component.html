@@ -1,0 +1,60 @@
+<div class="flex min-h-screen flex-col justify-center px-6 py-12 lg:px-8 bg-slate-100 ">
+  <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+    <h2 class="mt-10 text-center text-2xl leading-9 tracking-tight text-gray-900">
+      CarSystem
+    </h2>
+  </div>
+
+
+
+
+
+  <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-lg rounded-lg shadow-lg p-10 bg-white">
+
+    <app-signup-phase [signupPhase]="signUpPhase"/>
+
+  <form class="grid grid-cols-1 gap-x-6 gap-y-2 sm:grid-cols-6" action="#" method="POST">
+
+    <app-first-phase *ngIf="signUpPhase === 0" class="col-span-full mt-5 grid grid-cols-1 gap-x-6 gap-y-2 sm:grid-cols-6"/>
+    <app-second-phase *ngIf="signUpPhase === 1" class="col-span-full mt-5 grid grid-cols-1 gap-x-6 gap-y-2 sm:grid-cols-6"/>
+    <app-third-phase *ngIf="signUpPhase === 2" class="col-span-full mt-5 grid grid-cols-1 gap-x-6 gap-y-2 sm:grid-cols-6"/>
+
+    <div class="col-span-full mt-5 grid grid-cols-2 gap-4">
+      <button
+        *ngIf="signUpPhase !== 0"
+        type="submit" (click)="previousPhase()"
+        class=" flex w-full justify-center rounded-md bg-white px-3 py-1.5
+                text-sm font-semibold border border-gray text-gray-500 leading-6 shadow-sm hover:bg-gray-100
+                focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2
+                focus-visible:outline-gray-600 mb-2">
+        Voltar
+      </button>
+      <button
+        type="submit" (click)="nextPhase()"
+        [disabled]="!ableToNextPhase()"
+        [ngClass]="{
+            'col-span-full': signUpPhase === 0,
+            'bg-gray-300': !ableToNextPhase(),
+            'bg-indigo-600 hover:bg-indigo-500': ableToNextPhase()}"
+        class=" rounded-md px-3 py-1.5
+                text-sm font-semibold text-white leading-6 shadow-sm
+                focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2
+                focus-visible:outline-indigo-600 mb-2">
+        {{getPhaseSubmitBtnText()}}
+      </button>
+    </div>
+  </form>
+
+
+
+
+
+
+    <p class="mt-5 text-center text-sm text-gray-500">
+      Já possui conta?
+      <a href="/" class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
+        Faça login!
+      </a>
+    </p>
+  </div>
+</div>
