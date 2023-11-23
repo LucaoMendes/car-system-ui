@@ -11,6 +11,7 @@ import { SecondPhaseComponent } from './signup/second-phase/second-phase.compone
 import { SignupPhaseComponent } from './signup/signup-phase/signup-phase.component';
 import { ThirdPhaseComponent } from './signup/third-phase/third-phase.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { LoadingComponent } from './shared/components/loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     SecondPhaseComponent,
     SignupPhaseComponent,
     ThirdPhaseComponent,
+    LoadingComponent,
   ],
   imports: [
     BrowserModule,
