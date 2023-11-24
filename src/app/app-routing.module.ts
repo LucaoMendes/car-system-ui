@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { SignupService } from './services/signup.service';
+import { UserService } from './services/user.service';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -18,7 +19,8 @@ const routes: Routes = [
     RouterModule
   ],
   providers:[
-    SignupService
+    SignupService,
+    UserService,
   ]
 })
 export class AppRoutingModule { }
