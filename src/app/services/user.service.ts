@@ -21,14 +21,7 @@ export class UserService {
   current = this.loggedUser.asObservable()
 
   async login({username,password}: iLogin, forceError = false) {
-    const randomMs = Math.floor(Math.random() * 5000)
-    const probabilityError = Math.floor(Math.random() * 100)
-
-    await Utils.delay(randomMs)
-
-    if (probabilityError < 10 || forceError) {
-      throw new Error('Server error on login')
-    }
+    await this.randomRun(forceError)
 
     this.loggedUser.next({
       firstName: 'Lucas',
@@ -44,15 +37,25 @@ export class UserService {
   }
 
   async signup(user: iUser, forceError = false) {
-    const randomMs = Math.floor(Math.random() * 5000)
-    const probabilityError = Math.floor(Math.random() * 100)
+
+    await this.randomRun(forceError)
+    this.loggedUser.next(user)
+  }
+
+  generateRandom(){
+    const crypto = window.crypto || window.Crypto;
+    const array = new Uint32Array(1);
+    return crypto.getRandomValues(array)[0] / 4294967295;
+  }
+
+  async randomRun(forceError: boolean){
+    const randomMs = Math.floor(this.generateRandom() * 5000)
+    const probabilityError = Math.floor( this.generateRandom() * 100 )
 
     await Utils.delay(randomMs)
 
     if (probabilityError < 10 || forceError) {
       throw new Error('Server error on login')
     }
-
-    this.loggedUser.next(user)
   }
 }
