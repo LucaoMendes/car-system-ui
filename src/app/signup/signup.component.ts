@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { iUser } from '../shared/user.model';
 import { SignupService } from '../services/signup.service';
 import { SignupPhase } from './signup-phase/signup-phase.enum';
+import { UserService } from '../services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -9,9 +11,14 @@ import { SignupPhase } from './signup-phase/signup-phase.enum';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent {
-  signUpPhase = SignupPhase.THIRD
+  signUpPhase = SignupPhase.FIRST
+  loading = false
 
-  constructor(private signupService: SignupService) {
+  constructor(
+      private signupService: SignupService,
+      private userService: UserService,
+      private router: Router
+    ) {
     this.signupService.currentSignup.subscribe(signup => {
       this.signup = signup;
     });
@@ -30,13 +37,23 @@ export class SignupComponent {
   }
 
   nextPhase() {
+    this.loading = true;
     this.updateSignup();
 
-    if(this.signUpPhase === SignupPhase.THIRD)
-      return
+    if(this.signUpPhase === SignupPhase.THIRD){
+      this.userService.signup(this.signup)
+        .then(()=> this.router.navigate(['/dashboard']))
+        .catch(()=> {
+          alert('Erro ao cadastrar usuário');
+        })
+        .finally(()=> this.loading = false);
+        return
+    }
 
     this.signUpPhase =  this.signUpPhase === SignupPhase.FIRST ? SignupPhase.SECOND :
                         this.signUpPhase === SignupPhase.SECOND ? SignupPhase.THIRD : SignupPhase.FIRST;
+
+    this.loading = false;
   }
 
   ableToNextPhase(){
