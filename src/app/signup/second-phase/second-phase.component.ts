@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import { SignupService } from 'src/app/services/signup.service';
-import { iUser } from 'src/app/shared/user.model';
+import { Component } from '@angular/core'
+import { SignupService } from 'src/app/services/signup.service'
+import { iUser } from 'src/app/shared/user.model'
 
 @Component({
   selector: 'app-second-phase',
@@ -8,24 +8,24 @@ import { iUser } from 'src/app/shared/user.model';
   styleUrls: ['./second-phase.component.css'],
 })
 export class SecondPhaseComponent {
-  signup!: iUser;
-  loading = false;
+  signup!: iUser
+  loading = false
   constructor(private signupService: SignupService) {}
 
   ngOnInit() {
-    this.signupService.currentSignup.subscribe(signup => this.signup = signup);
+    this.signupService.currentSignup.subscribe(signup => this.signup = signup)
   }
 
   processFile(imageInput: any) {
-    const file: File = imageInput.files[0];
-    const reader = new FileReader();
+    const file: File = imageInput.files[0]
+    const reader = new FileReader()
 
-    this.loading = true;
+    this.loading = true
     reader.addEventListener('load', (event: any) => {
-      this.signup.photo = event.target.result;
-      this.loading = false;
-    });
+      this.signup.photo = event.target.result
+      this.loading = false
+    })
 
-    reader.readAsDataURL(file);
+    reader.readAsDataURL(file)
   }
 }

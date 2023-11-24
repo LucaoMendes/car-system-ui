@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
-import { eLoginMessageStatus, iLogin } from './model/login.model';
-import { UserService } from '../services/user.service';
-import { Router } from '@angular/router';
+import { Component } from '@angular/core'
+import { eLoginMessageStatus, iLogin } from './model/login.model'
+import { UserService } from '../services/user.service'
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-login',

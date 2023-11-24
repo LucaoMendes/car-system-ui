@@ -1,6 +1,6 @@
 <div class="flex flex-col col-span-full gap-y-4 ">
   <div
-    *ngIf="!signup.cars.length; else carsList"
+    *ngIf="!signup.cars.length else carsList"
     class="border border-gray flex rounded-md p-5 items-center justify-center text-gray-400 font-medium">
     Sem carros adicionados
   </div>
@@ -16,19 +16,19 @@
 
 
           <div class="flex text-gray-500">
-            <p class="text-gray-500 font-medium">Modelo:</p>&nbsp; {{car.model}}
+            <p class="text-gray-500 font-medium">Modelo:</p>&nbsp {{car.model}}
           </div>
 
           <div class="flex text-gray-500">
-            <p class="text-gray-500 font-medium">Ano:</p>&nbsp; {{car.year}}
+            <p class="text-gray-500 font-medium">Ano:</p>&nbsp {{car.year}}
           </div>
 
           <div class="flex text-gray-500">
-            <p class="text-gray-500 font-medium">Placa:</p>&nbsp; {{car.licensePlate}}
+            <p class="text-gray-500 font-medium">Placa:</p>&nbsp {{car.licensePlate}}
           </div>
 
           <div class="flex text-gray-500">
-            <p class="text-gray-500 font-medium">Cor:</p>&nbsp; {{car.color}}
+            <p class="text-gray-500 font-medium">Cor:</p>&nbsp {{car.color}}
           </div>
 
         </div>

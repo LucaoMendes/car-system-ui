@@ -1,5 +1,5 @@
-import { Component , Input } from '@angular/core';
-import { SignupPhase } from './signup-phase.enum';
+import { Component , Input } from '@angular/core'
+import { SignupPhase } from './signup-phase.enum'
 
 @Component({
   selector: 'app-signup-phase',
@@ -9,10 +9,10 @@ import { SignupPhase } from './signup-phase.enum';
 export class SignupPhaseComponent {
 
   @Input({ required: true })
-  signupPhase: SignupPhase = SignupPhase.SECOND;
+  signupPhase: SignupPhase = SignupPhase.SECOND
 
   changePhase(){
     alert(this.signupPhase)
-    this.signupPhase = this.signupPhase === SignupPhase.FIRST ? SignupPhase.SECOND : SignupPhase.FIRST;
+    this.signupPhase = this.signupPhase === SignupPhase.FIRST ? SignupPhase.SECOND : SignupPhase.FIRST
   }
 }

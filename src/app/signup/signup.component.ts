@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
-import { iUser } from '../shared/user.model';
-import { SignupService } from '../services/signup.service';
-import { SignupPhase } from './signup-phase/signup-phase.enum';
-import { UserService } from '../services/user.service';
-import { Router } from '@angular/router';
+import { Component } from '@angular/core'
+import { iUser } from '../shared/user.model'
+import { SignupService } from '../services/signup.service'
+import { SignupPhase } from './signup-phase/signup-phase.enum'
+import { UserService } from '../services/user.service'
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-signup',
@@ -20,8 +20,8 @@ export class SignupComponent {
       private router: Router
     ) {
     this.signupService.currentSignup.subscribe(signup => {
-      this.signup = signup;
-    });
+      this.signup = signup
+    })
   }
 
   signup:iUser = {
@@ -37,23 +37,23 @@ export class SignupComponent {
   }
 
   nextPhase() {
-    this.loading = true;
-    this.updateSignup();
+    this.loading = true
+    this.updateSignup()
 
     if(this.signUpPhase === SignupPhase.THIRD){
       this.userService.signup(this.signup)
         .then(()=> this.router.navigate(['/dashboard']))
         .catch(()=> {
-          alert('Erro ao cadastrar usuário');
+          alert('Erro ao cadastrar usuário')
         })
-        .finally(()=> this.loading = false);
+        .finally(()=> this.loading = false)
         return
     }
 
     this.signUpPhase =  this.signUpPhase === SignupPhase.FIRST ? SignupPhase.SECOND :
-                        this.signUpPhase === SignupPhase.SECOND ? SignupPhase.THIRD : SignupPhase.FIRST;
+                        this.signUpPhase === SignupPhase.SECOND ? SignupPhase.THIRD : SignupPhase.FIRST
 
-    this.loading = false;
+    this.loading = false
   }
 
   ableToNextPhase(){
@@ -80,7 +80,7 @@ export class SignupComponent {
   }
 
   previousPhase(){
-    this.updateSignup();
+    this.updateSignup()
 
     if(this.signUpPhase === SignupPhase.FIRST)
       return
@@ -92,11 +92,11 @@ export class SignupComponent {
   }
 
   getPhaseSubmitBtnText(){
-    return this.signUpPhase != SignupPhase.THIRD ? 'Próximo' : 'Enviar';
+    return this.signUpPhase != SignupPhase.THIRD ? 'Próximo' : 'Enviar'
   }
 
   updateSignup() {
-    this.signupService.changeSignup(this.signup);
+    this.signupService.changeSignup(this.signup)
   }
 
 

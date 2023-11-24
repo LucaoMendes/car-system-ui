@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { iUser } from '../shared/user.model';
+import { Injectable } from '@angular/core'
+import { BehaviorSubject } from 'rxjs'
+import { iUser } from '../shared/user.model'
 
 @Injectable({
   providedIn: 'root'
@@ -15,10 +15,10 @@ export class SignupService {
     password: '',
     phone: '',
     cars: []
-  });
-  currentSignup = this.signupSource.asObservable();
+  })
+  currentSignup = this.signupSource.asObservable()
 
   changeSignup(signup: iUser) {
-    this.signupSource.next(signup);
+    this.signupSource.next(signup)
   }
 }

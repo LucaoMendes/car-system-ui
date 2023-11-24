@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import { SignupService } from 'src/app/services/signup.service';
-import { iUser } from 'src/app/shared/user.model';
+import { Component } from '@angular/core'
+import { SignupService } from 'src/app/services/signup.service'
+import { iUser } from 'src/app/shared/user.model'
 
 @Component({
   selector: 'app-first-phase',
@@ -9,15 +9,15 @@ import { iUser } from 'src/app/shared/user.model';
 })
 
 export class FirstPhaseComponent {
-  signup!: iUser;
+  signup!: iUser
 
   constructor(private signupService: SignupService) {}
 
   ngOnInit() {
-    this.signupService.currentSignup.subscribe(signup => this.signup = signup);
+    this.signupService.currentSignup.subscribe(signup => this.signup = signup)
   }
 
   onChange(){
-    this.signupService.changeSignup(this.signup);
+    this.signupService.changeSignup(this.signup)
   }
 }
