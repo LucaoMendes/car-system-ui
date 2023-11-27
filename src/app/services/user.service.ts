@@ -36,6 +36,19 @@ export class UserService {
     })
   }
 
+  logout(){
+    this.loggedUser.next({
+      firstName: '',
+      lastName: '',
+      email: '',
+      birthday: '',
+      login: '',
+      password: '',
+      phone: '',
+      cars: []
+    })
+  }
+
   async signup(user: iUser, forceError = false) {
 
     await this.randomRun(forceError)

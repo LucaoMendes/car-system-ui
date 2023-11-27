@@ -9,7 +9,8 @@ import { UserService } from './services/user.service'
 const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
-  { path: 'dashboard', component: DashboardComponent}
+  { path: 'dashboard', component: DashboardComponent},
+  { path: 'dashboard/table', component: DashboardComponent},
 ]
 
 @NgModule({
